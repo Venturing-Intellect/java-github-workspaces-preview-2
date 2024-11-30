@@ -13,11 +13,18 @@ public class FeedbackRepositoryAdapter implements FeedbackRepositoryPort {
 
     @Override
     public void saveFeedback(Feedback feedback) {
-        feedbackJpaRepository.save(feedback);
+        FeedbackEntity feedbackEntity = new FeedbackEntity();
+        feedbackEntity.setEmail(feedback.getEmail());
+        feedbackEntity.setFeedbackText(feedback.getFeedbackText());
+        feedbackJpaRepository.save(feedbackEntity);
     }
 
     @Override
     public Feedback retrieveFeedback(String email) {
-        return feedbackJpaRepository.findByEmail(email);
+        FeedbackEntity feedbackEntity = feedbackJpaRepository.findByEmail(email);
+        Feedback feedback = new Feedback();
+        feedback.setEmail(feedbackEntity.getEmail());
+        feedback.setFeedbackText(feedbackEntity.getFeedbackText());
+        return feedback;
     }
 }

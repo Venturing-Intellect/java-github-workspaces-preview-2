@@ -24,3 +24,26 @@ To run the project with Docker Compose, follow these steps:
 
 4. The PostgreSQL database will be available at `localhost:5432`.
 5. You can now run the Spring Boot application using your preferred method (e.g., from your IDE or using the command line).
+
+## Running the Project with Maven
+
+To run the project with Maven, follow these steps:
+
+1. Ensure you have Maven installed on your machine.
+2. Navigate to the project directory.
+3. Run the following command to start the Spring Boot application:
+
+   ```sh
+   mvn spring-boot:run
+   ```
+
+4. The application will start and be available at `http://localhost:8080`.
+
+## Running the Project with IDE
+
+To run the project with an IDE, follow these steps:
+
+1. Import the project into your preferred IDE (e.g., IntelliJ IDEA, Eclipse).
+2. Ensure that the IDE is configured to use JDK 21.
+3. Run the `FeedbackApplication` class as a Java application.
+4. The application will start and be available at `http://localhost:8080`.

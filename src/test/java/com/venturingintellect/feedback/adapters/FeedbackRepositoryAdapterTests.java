@@ -1,19 +1,21 @@
 package com.venturingintellect.feedback.adapters;
 
+import com.venturingintellect.feedback.adapters.FeedbackEntity;
 import com.venturingintellect.feedback.domain.Feedback;
 import com.venturingintellect.feedback.ports.FeedbackRepositoryPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class FeedbackRepositoryAdapterTests {
 
     @Mock
@@ -33,18 +35,22 @@ public class FeedbackRepositoryAdapterTests {
         feedback.setEmail("test@example.com");
         feedback.setFeedbackText("Great service!");
 
+        FeedbackEntity feedbackEntity = new FeedbackEntity();
+        feedbackEntity.setEmail(feedback.getEmail());
+        feedbackEntity.setFeedbackText(feedback.getFeedbackText());
+
         feedbackRepositoryAdapter.saveFeedback(feedback);
 
-        verify(feedbackJpaRepository, times(1)).save(any(Feedback.class));
+        verify(feedbackJpaRepository, times(1)).save(any(FeedbackEntity.class));
     }
 
     @Test
     public void testRetrieveFeedback() {
-        Feedback feedback = new Feedback();
-        feedback.setEmail("test@example.com");
-        feedback.setFeedbackText("Great service!");
+        FeedbackEntity feedbackEntity = new FeedbackEntity();
+        feedbackEntity.setEmail("test@example.com");
+        feedbackEntity.setFeedbackText("Great service!");
 
-        when(feedbackJpaRepository.findByEmail("test@example.com")).thenReturn(feedback);
+        when(feedbackJpaRepository.findByEmail("test@example.com")).thenReturn(feedbackEntity);
 
         Feedback retrievedFeedback = feedbackRepositoryAdapter.retrieveFeedback("test@example.com");
 
