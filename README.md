@@ -47,3 +47,25 @@ To run the project with an IDE, follow these steps:
 2. Ensure that the IDE is configured to use JDK 21.
 3. Run the `FeedbackApplication` class as a Java application.
 4. The application will start and be available at `http://localhost:8080`.
+
+## Running Tests
+
+To run the tests for this project, follow these steps:
+
+1. Ensure you have Maven installed on your machine.
+2. Navigate to the project directory.
+3. Run the following command to execute the tests:
+
+   ```sh
+   mvn test
+   ```
+
+4. The tests will be executed, and the results will be displayed in the console.
+
+## Additional Information for Developers
+
+- The project follows the ports and adapters architecture (also known as Hexagonal Architecture) for the backend code.
+- The code is covered by unit tests and integration tests.
+- Validation annotations are used in the `Feedback` class to ensure that the email and feedback text fields are validated automatically by Spring.
+- Error handling in the `FeedbackController` class is improved by adding more specific exception handlers for different types of errors.
+- Logging is added to the application using the SLF4J logging framework.

@@ -1,7 +1,13 @@
 package com.venturingintellect.feedback.domain;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class Feedback {
+    @Email
     private String email;
+
+    @NotBlank
     private String feedbackText;
 
     public String getEmail() {
