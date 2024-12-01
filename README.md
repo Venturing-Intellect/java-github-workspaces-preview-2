@@ -95,3 +95,41 @@ To set up and run the React frontend for submitting feedback, follow these steps
 4. The React application will start and be available at `http://localhost:3000`.
 
 5. You can now submit feedback using the form provided in the React frontend.
+
+## Component Diagram
+
+```mermaid
+graph TD;
+    A[Frontend] --> B[Backend];
+    B[Backend] --> C[Database];
+
+    subgraph Frontend
+        A1[React App]
+    end
+
+    subgraph Backend
+        B1[Spring Boot Application]
+        B2[REST Controller]
+        B3[Service Layer]
+        B4[Repository Layer]
+    end
+
+    subgraph Database
+        C1[PostgreSQL]
+    end
+
+    A1 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> C1
+```
+
+### Technical Details
+
+- **Frontend**: The frontend is a React application that allows users to submit feedback through a form. It communicates with the backend via REST API calls.
+- **Backend**: The backend is a Spring Boot application that handles the business logic and data persistence.
+  - **REST Controller**: Handles incoming HTTP requests and maps them to appropriate service methods.
+  - **Service Layer**: Contains the business logic of the application.
+  - **Repository Layer**: Interacts with the database to perform CRUD operations.
+- **Database**: PostgreSQL is used as the database to store feedback data.
