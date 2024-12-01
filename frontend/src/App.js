@@ -5,13 +5,14 @@ import { Toast, ToastContainer } from 'react-bootstrap';
 function App() {
   const [email, setEmail] = useState('');
   const [feedbackText, setFeedbackText] = useState('');
+  const [name, setName] = useState('');
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [toastVariant, setToastVariant] = useState('success');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const feedback = { email, feedbackText };
+    const feedback = { email, feedbackText, name };
 
     try {
       const response = await fetch('http://localhost:8080/feedback', {
@@ -27,6 +28,7 @@ function App() {
         setToastVariant('success');
         setEmail('');
         setFeedbackText('');
+        setName('');
       } else {
         setToastMessage('Failed to submit feedback.');
         setToastVariant('danger');
@@ -51,6 +53,17 @@ function App() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>

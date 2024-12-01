@@ -46,12 +46,13 @@ public class FeedbackControllerTests {
         Feedback feedback = new Feedback();
         feedback.setEmail("test@example.com");
         feedback.setFeedbackText("Great service!");
+        feedback.setName("John Doe");
 
         doNothing().when(submitFeedbackUseCase).submitFeedback(any(Feedback.class));
 
         mockMvc.perform(post("/feedback")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"email\":\"test@example.com\",\"feedbackText\":\"Great service!\"}"))
+                .content("{\"email\":\"test@example.com\",\"feedbackText\":\"Great service!\",\"name\":\"John Doe\"}"))
                 .andExpect(status().isOk());
 
         verify(submitFeedbackUseCase, times(1)).submitFeedback(any(Feedback.class));
@@ -62,12 +63,13 @@ public class FeedbackControllerTests {
         Feedback feedback = new Feedback();
         feedback.setEmail("invalid-email");
         feedback.setFeedbackText("Great service!");
+        feedback.setName("John Doe");
 
         doThrow(new IllegalArgumentException("Invalid email format")).when(submitFeedbackUseCase).submitFeedback(any(Feedback.class));
 
         mockMvc.perform(post("/feedback")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"email\":\"invalid-email\",\"feedbackText\":\"Great service!\"}"))
+                .content("{\"email\":\"invalid-email\",\"feedbackText\":\"Great service!\",\"name\":\"John Doe\"}"))
                 .andExpect(status().isBadRequest());
 
         verify(submitFeedbackUseCase, times(1)).submitFeedback(any(Feedback.class));

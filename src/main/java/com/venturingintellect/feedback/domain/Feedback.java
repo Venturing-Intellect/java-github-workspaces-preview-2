@@ -10,6 +10,9 @@ public class Feedback {
     @NotBlank
     private String feedbackText;
 
+    @NotBlank
+    private String name;
+
     public String getEmail() {
         return email;
     }
@@ -24,5 +27,13 @@ public class Feedback {
 
     public void setFeedbackText(String feedbackText) {
         this.feedbackText = feedbackText;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

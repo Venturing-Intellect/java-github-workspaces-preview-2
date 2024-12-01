@@ -16,6 +16,7 @@ public class FeedbackRepositoryAdapter implements FeedbackRepositoryPort {
         FeedbackEntity feedbackEntity = new FeedbackEntity();
         feedbackEntity.setEmail(feedback.getEmail());
         feedbackEntity.setFeedbackText(feedback.getFeedbackText());
+        feedbackEntity.setName(feedback.getName());
         feedbackJpaRepository.save(feedbackEntity);
     }
 
@@ -25,6 +26,7 @@ public class FeedbackRepositoryAdapter implements FeedbackRepositoryPort {
         Feedback feedback = new Feedback();
         feedback.setEmail(feedbackEntity.getEmail());
         feedback.setFeedbackText(feedbackEntity.getFeedbackText());
+        feedback.setName(feedbackEntity.getName());
         return feedback;
     }
 }
