@@ -69,3 +69,29 @@ To run the tests for this project, follow these steps:
 - Validation annotations are used in the `Feedback` class to ensure that the email and feedback text fields are validated automatically by Spring.
 - Error handling in the `FeedbackController` class is improved by adding more specific exception handlers for different types of errors.
 - Logging is added to the application using the SLF4J logging framework.
+
+## Frontend Setup and Running Instructions
+
+To set up and run the React frontend for submitting feedback, follow these steps:
+
+1. Navigate to the `frontend` directory:
+
+   ```sh
+   cd frontend
+   ```
+
+2. Install the required dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Start the React development server:
+
+   ```sh
+   npm start
+   ```
+
+4. The React application will start and be available at `http://localhost:3000`.
+
+5. You can now submit feedback using the form provided in the React frontend.
