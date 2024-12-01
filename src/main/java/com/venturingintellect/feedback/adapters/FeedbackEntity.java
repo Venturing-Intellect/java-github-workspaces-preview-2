@@ -16,14 +16,16 @@ public class FeedbackEntity {
 
     private String email;
     private String feedbackText;
+    private String name;
 
     public FeedbackEntity() {
     }
 
-    public FeedbackEntity(Long id, String email, String feedbackText) {
+    public FeedbackEntity(Long id, String email, String feedbackText, String name) {
         this.id = id;
         this.email = email;
         this.feedbackText = feedbackText;
+        this.name = name;
     }
 
     public Long getId() {
@@ -48,5 +50,13 @@ public class FeedbackEntity {
 
     public void setFeedbackText(String feedbackText) {
         this.feedbackText = feedbackText;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

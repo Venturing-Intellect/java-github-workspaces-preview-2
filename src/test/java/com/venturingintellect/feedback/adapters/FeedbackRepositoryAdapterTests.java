@@ -34,10 +34,12 @@ public class FeedbackRepositoryAdapterTests {
         Feedback feedback = new Feedback();
         feedback.setEmail("test@example.com");
         feedback.setFeedbackText("Great service!");
+        feedback.setName("John Doe");
 
         FeedbackEntity feedbackEntity = new FeedbackEntity();
         feedbackEntity.setEmail(feedback.getEmail());
         feedbackEntity.setFeedbackText(feedback.getFeedbackText());
+        feedbackEntity.setName(feedback.getName());
 
         feedbackRepositoryAdapter.saveFeedback(feedback);
 
@@ -49,6 +51,7 @@ public class FeedbackRepositoryAdapterTests {
         FeedbackEntity feedbackEntity = new FeedbackEntity();
         feedbackEntity.setEmail("test@example.com");
         feedbackEntity.setFeedbackText("Great service!");
+        feedbackEntity.setName("John Doe");
 
         when(feedbackJpaRepository.findByEmail("test@example.com")).thenReturn(feedbackEntity);
 
@@ -56,5 +59,6 @@ public class FeedbackRepositoryAdapterTests {
 
         assertEquals("test@example.com", retrievedFeedback.getEmail());
         assertEquals("Great service!", retrievedFeedback.getFeedbackText());
+        assertEquals("John Doe", retrievedFeedback.getName());
     }
 }

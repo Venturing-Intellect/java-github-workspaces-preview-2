@@ -33,6 +33,7 @@ public class SubmitFeedbackServiceTests {
         Feedback feedback = new Feedback();
         feedback.setEmail("test@example.com");
         feedback.setFeedbackText("Great service!");
+        feedback.setName("John Doe");
 
         submitFeedbackService.submitFeedback(feedback);
 
@@ -44,6 +45,7 @@ public class SubmitFeedbackServiceTests {
         Feedback feedback = new Feedback();
         feedback.setEmail("invalid-email");
         feedback.setFeedbackText("Great service!");
+        feedback.setName("John Doe");
 
         assertThrows(IllegalArgumentException.class, () -> {
             submitFeedbackService.submitFeedback(feedback);
